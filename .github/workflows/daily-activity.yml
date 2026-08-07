@@ -17,9 +17,11 @@ jobs:
         with:
           ref: main
 
-      - name: Make empty commit
+      - name: Make 10 empty commits
         run: |
           git config user.name "GitHub Actions Bot"
           git config user.email "actions@github.com"
-          git commit --allow-empty -m "chore: daily activity check-in"
+          for i in $(seq 1 10); do
+            git commit --allow-empty -m "chore: daily activity check-in $i"
+          done
           git push origin HEAD:main

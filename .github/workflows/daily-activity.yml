@@ -14,10 +14,12 @@ jobs:
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
+        with:
+          ref: main
 
       - name: Make empty commit
         run: |
           git config user.name "GitHub Actions Bot"
           git config user.email "actions@github.com"
           git commit --allow-empty -m "chore: daily activity check-in"
-          git push
+          git push origin HEAD:main
